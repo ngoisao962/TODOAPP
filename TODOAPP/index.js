@@ -29,6 +29,7 @@ closeIcon.addEventListener("click", () => {
 });
 window.addEventListener("click",function(e){
     if(e.target === popupBox){
+        titleTag.value = descTag.value = "";
         popupBox.classList.remove("show")
     }
 })
@@ -131,10 +132,11 @@ addBtn.addEventListener("click", e => {
     description = descTag.value.trim();
     if(title || description) {
         let currentDate = new Date(),
+        time = currentDate.getHours(),
         month = months[currentDate.getMonth()],
         day = currentDate.getDate(),
         year = currentDate.getFullYear();
-        let noteInfo = {title, description, date: ` ngày ${day} ${month} , ${year}`,status: "pending"}
+        let noteInfo = {title, description, date: `${time} giờ  ${day}/${month}/${year}`,status: "pending"}
         if(!isUpdate) {
             notes.push(noteInfo);
         } else {
